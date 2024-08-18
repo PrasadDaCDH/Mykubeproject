@@ -26,3 +26,5 @@ This file cosist of command for kubernetes cluster.
 
 9>TO get the logs of the pod
 #kubectl logs nameofthepod
+
+10>
