@@ -1,13 +1,15 @@
 apiVersion: v1
+
 kind: Pod
+
 metadata: 
-  name: calculatorapp
+  name: calculator-app
   labels:
     app: calculator 
 spec:
   containers:
-    - name: calculatorpythonapp
-      image: cloudcommandclassroom/calculatorimage:latest
-      imagepullpolicy: Always
-      ports:
-      - containerPort: 8080
+  - name: calculatorpythonapp
+    image: cloudcommandclassroom/calculatorimage:latest
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 8080
