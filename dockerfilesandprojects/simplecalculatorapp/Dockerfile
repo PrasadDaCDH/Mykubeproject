@@ -1,7 +1,7 @@
 FROM ubuntu
 
 #need to install python first
-RUN apt-get install update && apt-get install -y python3
+RUN apt-get update && apt-get install -y python3
 
 WORKDIR /app
 
