@@ -13,7 +13,7 @@ This file cosist of command for kubernetes cluster.
 #kubectl get pods
 
 5>To get the full information on running pods
-#kubectl git pods -o wide
+#kubectl get pod -o wide
 
 6>TO delete the pod
 #kubectl delete pod "nameofthepod"
