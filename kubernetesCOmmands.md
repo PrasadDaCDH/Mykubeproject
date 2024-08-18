@@ -27,4 +27,11 @@ This file cosist of command for kubernetes cluster.
 9>TO get the logs of the pod
 #kubectl logs nameofthepod
 
-10>
+10>To add docker-hub secret to the kubernets
+kubectl create secret docker-registry my-dockerhub-secret \
+  --docker-username=<your-dockerhub-username> \
+  --docker-password=<your-dockerhub-password> \
+  --docker-email=<your-email>
+
+11>To run the pod intractively 
+kubectl exec -it podname -- python3 calculator.py
