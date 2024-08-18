@@ -13,7 +13,7 @@ This file cosist of command for kubernetes cluster.
 #kubectl get pods
 
 5>To get the full information on running pods
-#kubectl git pods -o wide
+#kubectl get pod -o wide
 
 6>TO delete the pod
 #kubectl delete pod "nameofthepod"
@@ -26,3 +26,12 @@ This file cosist of command for kubernetes cluster.
 
 9>TO get the logs of the pod
 #kubectl logs nameofthepod
+
+10>To add docker-hub secret to the kubernets
+kubectl create secret docker-registry my-dockerhub-secret \
+  --docker-username=<your-dockerhub-username> \
+  --docker-password=<your-dockerhub-password> \
+  --docker-email=<your-email>
+
+11>To run the pod intractively 
+kubectl exec -it podname -- python3 calculator.py
