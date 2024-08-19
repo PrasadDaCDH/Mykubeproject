@@ -35,3 +35,31 @@ kubectl create secret docker-registry my-dockerhub-secret \
 
 11>To run the pod intractively 
 kubectl exec -it podname -- python3 calculator.py
+
+12>To get the deployment and replicaset
+kubectl get deploy
+kubectl get rs (replicaset)
+
+13>TO watch pods
+kubectl get pods -w
+
+14>TO remove the deployment
+kubectl delete deploy deployment-name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
