@@ -244,3 +244,57 @@ spec:
 Labels are key-value pairs that provide a way to organize and categorize Kubernetes objects, while selectors are used to query and select a subset of objects based on their labels. In the context of a Service, selectors determine which Pods the Service will route traffic to, enabling dynamic and flexible routing based on the current state of your cluster.
 ### Summary
 Load balancing in Kubernetes ensures that traffic is efficiently distributed across all Pods running your application, providing redundancy, high availability, and better resource utilization. Kubernetes abstracts much of this complexity, allowing you to define simple rules that control how traffic is handled.
+
+
+Q) What is ingress and why it is used?
+In Kubernetes, **Ingress** is a resource that manages external access to services within a cluster. It typically provides HTTP and HTTPS routes to services, enabling users to access applications from outside the Kubernetes cluster. An Ingress can offer load balancing, SSL termination, and name-based virtual hosting.
+
+### Key Components of Ingress:
+
+1. **Ingress Controller**: 
+   - A specialized load balancer for the Ingress resource that handles the routing of external traffic to the appropriate services inside the Kubernetes cluster.
+   - You must have an Ingress controller running in the cluster to use an Ingress resource. Different controllers can be used, such as NGINX, HAProxy, or others.
+
+2. **Ingress Resource**:
+   - A YAML or JSON configuration that defines how requests should be routed to different services within the cluster.
+   - It specifies rules for routing based on the host and/or path of incoming requests.
+
+### Why is Ingress Used?
+
+1. **Centralized Management**: Ingress allows you to manage access to multiple services using a single entry point, which simplifies administration and reduces the need for multiple load balancers.
+
+2. **Load Balancing**: Ingress can distribute incoming traffic across multiple instances of a service, ensuring high availability and efficient use of resources.
+
+3. **SSL Termination**: Ingress can manage SSL/TLS certificates, offloading the encryption/decryption process from individual services.
+
+4. **Path-Based Routing**: You can route traffic to different services based on the URL path, allowing for a more organized and scalable architecture.
+
+5. **Name-Based Virtual Hosting**: Ingress supports routing based on the host header, enabling multiple services to share the same IP address but be accessible through different domain names.
+
+### Example:
+
+Here’s a simple example of an Ingress resource:
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+spec:
+  rules:
+  - host: example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: example-service
+            port:
+              number: 80
+```
+
+In this example, all traffic to `example.com` will be routed to a service named `example-service` on port 80.
+
+### Conclusion:
+Ingress is essential in Kubernetes for managing external access to services, particularly for complex applications that require sophisticated routing, SSL termination, and load balancing.
