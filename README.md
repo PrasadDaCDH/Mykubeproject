@@ -558,3 +558,140 @@ In Kubernetes, a **Custom Resource (CR)** is an extension of the Kubernetes API 
 - **Configuration Management:** Store and manage complex configurations or infrastructure as code within the Kubernetes API.
 
 By using custom resources and controllers, Kubernetes can be extended to manage virtually any type of infrastructure or application, providing a powerful platform for automation and orchestration.
+
+
+WHat is Configmaps?
+ConfigMaps in Kubernetes are used to store configuration data in a key-value format that can be consumed by containers in a Kubernetes pod. They allow you to decouple configuration artifacts from image content, so that your applications are easier to manage and configure.
+
+### Key Features of ConfigMaps:
+1. **Key-Value Pairs**: ConfigMaps store data as key-value pairs. These can be simple values, like strings, or more complex data, like entire configuration files.
+
+2. **Separation of Configuration and Code**: By storing configuration data in ConfigMaps, you can manage the configuration separately from the container images, allowing for greater flexibility and easier updates.
+
+3. **Usage in Pods**:
+    - **Environment Variables**: ConfigMaps can be injected as environment variables into a container.
+    - **Volume Mounts**: ConfigMaps can be mounted as files or directories in a container's filesystem.
+    - **Command-line Arguments**: ConfigMap data can also be used as arguments in container commands.
+
+4. **Dynamic Updates**: If a ConfigMap is updated, Kubernetes can automatically update the containers that use it, depending on how the ConfigMap is used.
+
+### Example Usage
+
+Here is a simple example of how a ConfigMap might be defined in a YAML file:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  database_url: "mongodb://localhost:27017"
+  log_level: "INFO"
+```
+
+This ConfigMap can then be used in a pod like this:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: my-container
+      image: my-image
+      env:
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: my-config
+              key: database_url
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: my-config
+              key: log_level
+```
+
+In this example, `DATABASE_URL` and `LOG_LEVEL` environment variables inside the container are populated using values from the `my-config` ConfigMap. 
+
+ConfigMaps are a critical component in managing Kubernetes applications that require external configuration.
+
+)What is Secrets in kubernetes?
+In Kubernetes, **Secrets** are used to securely store and manage sensitive information such as passwords, tokens, SSH keys, and other confidential data that your applications need. Secrets provide a way to protect this sensitive information from being exposed in your application's source code or container images.
+
+### Key Features of Kubernetes Secrets:
+
+1. **Sensitive Data Storage**:
+   - Secrets store sensitive information that shouldn't be stored in plaintext within your application code or configuration files.
+
+2. **Base64 Encoding**:
+   - Secrets are stored as base64-encoded strings. While this provides a basic level of obfuscation, it's important to note that this is not encryption. The data can be easily decoded back to its original form.
+
+3. **Secure Access Control**:
+   - Access to Secrets is managed by Kubernetes' Role-Based Access Control (RBAC) system. This ensures that only authorized users or services can access the Secrets.
+
+4. **Usage in Pods**:
+   - **Environment Variables**: You can inject Secrets into containers as environment variables.
+   - **Volume Mounts**: Secrets can be mounted as files in the container's filesystem, where each key in the Secret is represented as a file.
+   - **Direct API Access**: Applications can also retrieve Secrets directly from the Kubernetes API if they have the necessary permissions.
+
+5. **Encryption at Rest**:
+   - In many Kubernetes setups, Secrets can be encrypted at rest using tools like `KMS` (Key Management Service) to ensure that the sensitive information is protected even when stored on disk.
+
+### Example of a Secret
+
+Here's an example of a Kubernetes Secret defined in a YAML file:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+type: Opaque
+data:
+  username: dXNlcm5hbWU=  # base64 encoded string "username"
+  password: cGFzc3dvcmQ=  # base64 encoded string "password"
+```
+
+In this example, the `username` and `password` are stored as base64-encoded strings. You can create this Secret using `kubectl`:
+
+```bash
+kubectl apply -f my-secret.yaml
+```
+
+### Using Secrets in a Pod
+
+You can use the Secret in a Pod like this:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  containers:
+    - name: my-container
+      image: my-image
+      env:
+        - name: USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: username
+        - name: PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: password
+```
+
+In this example, the `USERNAME` and `PASSWORD` environment variables inside the container will be populated with the decoded values from the `my-secret` Secret.
+
+### Types of Secrets
+- **Opaque**: The default type, used for arbitrary user-defined data.
+- **Docker Registry**: For storing Docker credentials, useful for pulling images from private registries.
+- **TLS**: For storing TLS certificates and keys.
+
+Secrets are crucial in ensuring that sensitive information is handled securely and not inadvertently exposed within your Kubernetes environment.
+
