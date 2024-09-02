@@ -695,3 +695,6 @@ In this example, the `USERNAME` and `PASSWORD` environment variables inside the 
 
 Secrets are crucial in ensuring that sensitive information is handled securely and not inadvertently exposed within your Kubernetes environment.
 
+
+
+
