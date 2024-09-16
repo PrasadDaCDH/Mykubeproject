@@ -1,0 +1,7 @@
+
+We have to achive 3 things here
+1> Service discovery
+2> Exposing the application
+3> Load balancing
+
+Service that is used for exposing and taking care of all three is kube-proxy
