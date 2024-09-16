@@ -46,6 +46,14 @@ kubectl get pods -w
 14>TO remove the deployment
 kubectl delete deploy deployment-name
 
+15>To get the Ip of minikube
+minikube IP
+
+16>TO get the service details
+kubectl get svc
+
+17>TO edit the service
+kubectl edit svc servicename
 
 
 
