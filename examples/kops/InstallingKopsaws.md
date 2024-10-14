@@ -2,7 +2,7 @@ https://kops.sigs.k8s.io/getting_started/aws/
 (for ubuntu)
 
 Prereuisites for kops:
-sudp apt update -y
+sudo apt update -y
 sudo apt install unzip -y
 
 1> Install aws cli on the linux
@@ -48,5 +48,25 @@ aws iam list-users      # you should see a list of all your IAM users here
 # Because "aws configure" doesn't export these vars for kops to use, we export them now
 export AWS_ACCESS_KEY_ID=$(aws configure get aws_access_key_id)
 export AWS_SECRET_ACCESS_KEY=$(aws configure get aws_secret_access_key)
+
+Further installation process:
+https://aws.amazon.com/tutorials/run-kops-kubernetes-clusters-for-less-with-amazon-ec2-spot-instances/
+
+Downloading and installing kops version
+
+export KOPS_VERSION=v1.28.4
+curl -LO https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-linux-amd64
+chmod +x kops-linux-amd64
+sudo mv kops-linux-amd64 /usr/local/bin/kops
+kops version
+
+
+Installing and Downloading Kubectl
+
+export KUBECTL_VERSION=v1.29.2
+sudo curl --silent --location -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl
+sudo chmod +x /usr/local/bin/kubectl
+kubectl version
+
 
 
