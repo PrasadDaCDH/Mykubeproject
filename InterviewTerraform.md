@@ -31,10 +31,33 @@ IaC?
 21>How do you manage unmanaged AWS resources in Terraform?
 22> How do you pass arguments to a VPC while using the 'terraform import' command?
 23>What are the prerequisites before importing a VPC in Terraform?
+
 24> If an S3 bucket was created through Terraform but someone manually added a policy to it, 
 how do you handle this situation?
 
 
 https://www.youtube.com/watch?v=Nyxf03mQ3uc&list=PL8WTXLSrtyWpC_2KvHF49VkbtIVOcd8Gl&index=7
 
-25>
+25>When the state file is created?
+26>How to store the state file in public cloud?
+27>What is tent command in terraform?
+28>Null resource in terraform?
+29>Module in terraform?
+30>Data soucrce in terraform?
+31>What are the resources you have created on Terraform in AWS?
+32>What is dynamic block in terraform?
+33>WHat is v-net integration why it is used?
+34>What is service endpoint and private endpoint?
+35>Error code 400 and 500 for troubleshooting?
+36>How to restore the database The command?
+37>What is custom actions on github?
+38>How to create multiple enviornment in github and terraform?
+39>how to write github workflow?
+40>How to resolve merge confilct for DevOps in github?
+41>What are branch policies and approvals?
+42>You need to stop the pipeline and it is not allowed to stop whats the approach?
+43>How to write pipeline in yaml code? (what is job and stages)
+44>What is stratergy is used in deploying terraform code ?
+45>Have you implemented sonarqube on CICD?
+46>AWS cli?
+47>
