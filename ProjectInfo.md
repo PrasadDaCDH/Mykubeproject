@@ -21,4 +21,11 @@ What application you have?
 8>Why terraform not other tools?
 9>How to maintain statefile?
 10>How to trigger the pipeline?
-11>
+11>What is ECS?
+12>Why we need docker in your project?
+13>how to wirte docker file?
+14>You have nginx server and want to change the webpage?
+15>CD uses argocd
+16>The flow of cicd?
+17>How will plan the deployment of new project using docker ,Kubernetes and AWS?
+18>
