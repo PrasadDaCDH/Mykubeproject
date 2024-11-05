@@ -59,5 +59,24 @@ https://www.youtube.com/watch?v=Nyxf03mQ3uc&list=PL8WTXLSrtyWpC_2KvHF49VkbtIVOcd
 43>How to write pipeline in yaml code? (what is job and stages)
 44>What is stratergy is used in deploying terraform code ?
 45>Have you implemented sonarqube on CICD?
+46>How does terraform is diffrent from cloudFormation?
+47>Secrets manager ?
+48>How to colabrate in high terms of conflict for terraform project?
+49>What is command is used to create statefile is created?
+50>what will happen in the scinario where dyanamic values were takken in the cicd and you forgot to give 
+2 values out of 20 what will happen?
+51>What is terraform statelock?
+52>How to define dependancies in terraform?
+53>How many types of dependancies are there?
+54>what is external data block in terraform?
+55>What is Null and retentant resource in terraform?
+56>WHy we use terraform immprot?
+57>How many jobs there are in your pipeline?
+58>What are the services created by Terraform?
+59>What is terraform state and terrafrom plan?
+60>How to manage api secret keys in terraform?
+61>
+
+
 46>AWS cli?
 47>
